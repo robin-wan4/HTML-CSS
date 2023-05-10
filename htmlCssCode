@@ -50,29 +50,25 @@
 	text-align: center;
     padding:10px;
 }    
-/***********check   boarder**********/
-.row {
+
+
+/* Column container */
+.row {  
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -16px;
 }
 
-.col-25 {
-  flex: 25%;
-}
-
-.col-50 {
-  flex: 50%;
-}
-
-.col-75 {
+.main {
   flex: 75%;
+  padding: 20px;
 }
-
-.col-25,
-.col-50,
-.col-75 {
-  padding: 0 16px;
+.half {
+  flex: 50%;
+  padding: 20px;
+}
+.side {
+  flex: 25%;
+  padding: 20px;
 }
 
 .container {
@@ -82,169 +78,117 @@
   border-radius: 3px;
 }
 
-
-
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-  .col-25 {
-    margin-bottom: 20px;
-  }
-}
-
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-label {
-  margin-bottom: 10px;
-  display: block;
-}
-
 .icon-container {
   margin-bottom: 20px;
   padding: 7px 0;
   font-size: 24px;
 }
 
-.bkgd
-{
-  background-color: #474e5d;
-  font-family: Helvetica, sans-serif;
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .main, .side {   
+    flex-direction: column;
+  }
 }
 
 
-.timeline {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
 
-.timeline::after {
-  content: '';
-  position: absolute;
-  width: 6px;
-  background-color: white;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -3px;
-}
-
+/* timeline */
 
 .containerTime {
-  padding: 10px 40px;
-  position: relative;
-  background-color: inherit;
-  width: 50%;
+	min-height: 100vh;
+	width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 100px 0;
+    background-color:lightslategrey;
+    }
+.timeline{
+    width:80%;
+    height:auto;
+    max-width:800px;
+    margin:0 auto;
+    position:relative;
 }
-
-
-.containerTime::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -17px;
-  background-color: white;
-  border: 4px solid #FF9F55;
-  top: 15px;
-  border-radius: 50%;
-  z-index: 1;
+.timeline ul {
+  list-style:none;
 }
-
-
-.left {
-  left: 0;
+.timeline ul li{
+ padding: 20px;
+ background-color:white;
+ color:black;
+ boarder-radius:10px;
+ margin-bottom:20px;
+ }
+.timeline ul li:last-child{
+margin-bottom:0;
 }
-
-
-.right {
-  left: 50%;
-}
-
-
-.left::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  right: 30px;
-  border: medium solid white;
-  border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent white;
-}
-
-
-.right::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  left: 30px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
-}
-
-
-.right::after {
-  left: -16px;
-}
-
-
-.content {
-  padding: 20px 30px;
-  background-color: white;
-  position: relative;
-  border-radius: 6px;
-}
-
-
-@media screen and (max-width: 600px) {
-
-  .timeline::after {
-  left: 31px;
+.timeline-content h1{
+    font-size:25px;
+    font-weight:400;
+    line-height:30px;
+    margin-bottom:5pt;
   }
-  
-
-  .containerTime {
-  width: 100%;
-  padding-left: 70px;
-  padding-right: 25px;
+.timeline-content p{
+    font-size:16px;
+    font-weight:400;
+    line-height:20px;
+    
+   
   }
-  
-
-  .containerTime::before {
-  left: 60px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
+@media only screen and (min-width: 768px) {
+  .timeline:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: white;
   }
-
-
-  .left::after, .right::after {
-  left: 15px;
+	.timeline ul li {
+    	width:50%;
+        margin-bottom:50px;
+        position:relative;
+        }
+     .timeline ul li:nth-child(odd){
+     float:left;
+     clear: right;
+     transform: translateX(-20.5%);
+     }
+     .timeline ul li:nth-child(even){
+     float:right;
+     clear: left;
+     transform: translateX(11%);
+     } 
+ .timeline ul li:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: orange;
+    border-radius:50%;
+    top:0;
+    }
+  .timeline ul li:nth-child(odd)::after{
+  transform: translate(50%,-50%);
+  right:-60px;
   }
-  
-
-  .right {
-  left: 0%;
+   .timeline ul li:nth-child(even)::after{
+  transform: translate(50%,-50%);
+  left:-82px;
   }
-}
-
 
 
 
@@ -266,35 +210,33 @@ label {
 </div>
 
 <div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
-      
-        <div class="row">
-          <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
+  <div class="main">
+  	<div class = "container">
+    	<div class="row">
+    		<div class = "half"> 
+              <h3>Billing Address</h3>
+              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+              <label for="email"><i class="fa fa-envelope"></i> Email</label>
+              <input type="text" id="email" name="email" placeholder="john@example.com">
+              <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+              <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+              <label for="city"><i class="fa fa-institution"></i> City</label>
+              <input type="text" id="city" name="city" placeholder="New York">
 
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="10001">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-50">
+  				<div class = "row">
+    				<div class = "half">
+                    	<label for="state">State</label>
+                		<input type="text" id="state" name="state" placeholder="NY">
+              		</div>
+              		<div class="half">
+                		<label for="zip">Zip</label>
+                		<input type="text" id="zip" name="zip" placeholder="10001">
+                    </div>
+             	</div>
+             </div>  
+             
+         <div class="half">
             <h3>Payment</h3>
             <label for="fname">Accepted Cards</label>
             <div class="icon-container">
@@ -310,61 +252,54 @@ label {
             <label for="expmonth">Exp Month</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="September">
             <div class="row">
-              <div class="col-50">
+              <div class="half">
                 <label for="expyear">Exp Year</label>
                 <input type="text" id="expyear" name="expyear" placeholder="2018">
               </div>
-              <div class="col-50">
+              <div class="half">
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" placeholder="352">
               </div>
             </div>
           </div>
-          
         </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
         <input type="submit" value="Continue to checkout" class="btn">
       </form>
     </div>
   </div>
-  <div class="col-25">
-    <div class="container">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">Item 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Item 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Item 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Item 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>
-  </div>
-</div>
-
-<div class = "bkgd">
-<div class="timeline">
-  <div class="containerTime left">
-    <div class="content">
-      <h2>2017</h2>
-      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-    </div>
-  </div>
-  <div class="containerTime right">
-    <div class="content">
-      <h2>2016</h2>
-      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-    </div>
-  </div>
-  <div class="containerTime left">
-    <div class="content">
-      <h2>2015</h2>
-      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-    </div>
-  </div>
-
-</div>
-</div>
-
+        
+          <div class="side">
+            <div class="container">
+              <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+              <p><a href="#">item 1</a> <span class="price">$15</span></p>
+              <p><a href="#">item 2</a> <span class="price">$5</span></p>
+              <p><a href="#">item 3</a> <span class="price">$8</span></p>
+              <p><a href="#">item 4</a> <span class="price">$2</span></p>
+              <hr>
+              <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            </div>
+  		</div>
+	</div>	<div class="containerTime">
+    <div class="timeline">
+    <ul>
+    <li>
+    <div class="timeline-content">
+    	<h1>2017</h1>
+        <p>If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. We created the Random Paragraph Generator with you in mind. The process is quite simple. </p>
+     </div>
+     </li>
+    <li>
+    <div class="timeline-content">
+    	<h1>2016</h1>
+        <p>If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. We created the Random Paragraph Generator with you in mind. The process is quite simple. </p>
+     </div>
+     </li>    <li>
+    <div class="timeline-content">
+    	<h1>2015</h1>
+        <p>If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. We created the Random Paragraph Generator with you in mind. The process is quite simple. </p>
+     </div>
+     </li>
 </body>
 </html>
